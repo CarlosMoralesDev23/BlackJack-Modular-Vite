@@ -2,7 +2,7 @@ import _ from "underscore";
 
 import { btnPedir, btnDetener, btnNuevo, divCartasJugador, divCartasComputadora, puntosHTML  } from "./usecases/barril.js"
 
-import { crearDeck, pedirCarta, valorCarta, turnoComputadora, crearCarta} from "./usecases/barril.js";
+import { crearDeck, pedirCarta, valorCarta, turnoComputadora, crearCarta, puntosYAsignar} from "./usecases/barril.js";
 
 /**
  * 2C = Two of Clubs
@@ -14,14 +14,9 @@ import { crearDeck, pedirCarta, valorCarta, turnoComputadora, crearCarta} from "
 let deck = []
 const tiposDeCarta = ["C", "D", "H", "S"];
 const tiposEspeciales = ["A", "J", "Q", "K"];
-
-
 let puntosJugador = 0
-
+let puntosComputadora = 0
 // Referencias del HTML
-
-
-
 
 
 deck = crearDeck( tiposDeCarta, tiposEspeciales);
@@ -32,11 +27,10 @@ btnPedir.addEventListener("click", () => {
 
     const carta = pedirCarta( deck );
 
-    puntosJugador = puntosJugador + valorCarta(carta);
-    puntosHTML[0].innerText = puntosJugador;
+    puntosJugador = puntosYAsignar( puntosJugador, carta, puntosHTML[0] )
 
     const imgCarta =  crearCarta( carta )
-    divCartasJugador.append(imgCarta);
+    divCartasJugador.append( imgCarta );
 
     if (puntosJugador > 21) {
         console.warn("Lo siento mucho, perdiste");
@@ -61,7 +55,7 @@ btnDetener.addEventListener("click", () => {
 btnNuevo.addEventListener("click", () => {
     console.clear();
     deck = [];
-    deck = crearDeck(tipos, especiales);
+    deck = crearDeck(tiposDeCarta, tiposEspeciales);
 
     puntosJugador = 0;
     puntosComputadora = 0;

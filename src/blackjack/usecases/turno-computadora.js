@@ -43,4 +43,6 @@ export const turnoComputadora = (puntosMinimos, puntosHTML, divCartasComputadora
             alert("Computadora Gana");
         }
     }, 100);
+
+    return puntosComputadora
 };  
