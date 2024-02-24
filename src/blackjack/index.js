@@ -1,5 +1,5 @@
 import _ from "underscore";
-import { crearDeck } from "./usecases/crear-deck";
+import { crearDeck, pedirCarta, valorCarta} from "./usecases/barril";
 
 /**
  * 2C = Two of Clubs
@@ -8,7 +8,7 @@ import { crearDeck } from "./usecases/crear-deck";
  * 2S = Two of Spades
  */
 
-let deck = [];
+let deck = []
 const tipos = ["C", "D", "H", "S"];
 const especiales = ["A", "J", "Q", "K"];
 
@@ -26,28 +26,16 @@ const divCartasComputadora = document.querySelector("#computadora-cartas");
 const puntosHTML = document.querySelectorAll("small");
 
 
+deck = crearDeck(tipos, especiales);
+console.log(deck)
 
-crearDeck(tipos, especiales, deck);
 
-// Esta función me permite tomar una carta
-const pedirCarta = () => {
-    if (deck.length === 0) {
-        throw "No hay cartas en el deck";
-    }
-    const carta = deck.pop();
-    return carta;
-};
 
-// pedirCarta();
-const valorCarta = (carta) => {
-    const valor = carta.substring(0, carta.length - 1);
-    return isNaN(valor) ? (valor === "A" ? 11 : 10) : valor * 1;
-};
 
 // turno de la computadora
 const turnoComputadora = (puntosMinimos) => {
     do {
-        const carta = pedirCarta();
+        const carta = pedirCarta( deck );
 
         puntosComputadora = puntosComputadora + valorCarta(carta);
         puntosHTML[1].innerText = puntosComputadora;
@@ -74,16 +62,18 @@ const turnoComputadora = (puntosMinimos) => {
             alert("Computadora Gana");
         }
     }, 100);
-};
+};  
 
 // Eventos
 btnPedir.addEventListener("click", () => {
-    const carta = pedirCarta();
+
+    const carta = pedirCarta( deck );
+    console.log(`carta = ${carta}`)
 
     puntosJugador = puntosJugador + valorCarta(carta);
     puntosHTML[0].innerText = puntosJugador;
 
-    // <img class="carta" src="assets/cartas/2C.png">
+    // <img class="carta" src="assets/cartas/2C.png">   
     const imgCarta = document.createElement("img");
     imgCarta.src = `assets/cartas/${carta}.png`; //3H, JD
     imgCarta.classList.add("carta");
@@ -112,7 +102,7 @@ btnDetener.addEventListener("click", () => {
 btnNuevo.addEventListener("click", () => {
     console.clear();
     deck = [];
-    deck = crearDeck();
+    deck = crearDeck(tipos, especiales);
 
     puntosJugador = 0;
     puntosComputadora = 0;
