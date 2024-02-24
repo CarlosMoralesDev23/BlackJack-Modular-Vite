@@ -1,5 +1,7 @@
 import _ from "underscore";
 
+import { btnPedir, btnDetener, btnNuevo, divCartasJugador, divCartasComputadora, puntosHTML  } from "./usecases/barril.js"
+
 import { crearDeck, pedirCarta, valorCarta, turnoComputadora, crearCarta} from "./usecases/barril.js";
 
 /**
@@ -17,14 +19,9 @@ const tiposEspeciales = ["A", "J", "Q", "K"];
 let puntosJugador = 0
 
 // Referencias del HTML
-const btnPedir = document.querySelector("#btnPedir");
-const btnDetener = document.querySelector("#btnDetener");
-const btnNuevo = document.querySelector("#btnNuevo");
 
-const divCartasJugador = document.querySelector("#jugador-cartas");
-const divCartasComputadora = document.querySelector("#computadora-cartas");
 
-const puntosHTML = document.querySelectorAll("small");
+
 
 
 deck = crearDeck( tiposDeCarta, tiposEspeciales);
@@ -38,8 +35,7 @@ btnPedir.addEventListener("click", () => {
     puntosJugador = puntosJugador + valorCarta(carta);
     puntosHTML[0].innerText = puntosJugador;
 
-    //TODO CREAR CARTA
-    crearCarta( carta )
+    const imgCarta =  crearCarta( carta )
     divCartasJugador.append(imgCarta);
 
     if (puntosJugador > 21) {

@@ -1,11 +1,18 @@
 
 
-
+/**
+ * 
+ * @param {String} carta 
+ * @returns {HTMLImageElement} iamgen de retorno
+ */
 
 export const crearCarta = ( carta )=>{
-    // <img class="carta" src="assets/cartas/2C.png">
+
+    if ( !crearCarta ) throw new Error ('La carta es un argumento obligatorio')
+    
     const imgCarta = document.createElement("img");
     imgCarta.src = `assets/cartas/${carta}.png`; //3H, JD
     imgCarta.classList.add("carta");
 
+    return imgCarta
 }
