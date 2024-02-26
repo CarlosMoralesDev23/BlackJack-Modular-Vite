@@ -1,12 +1,11 @@
 
 import { valorCarta } from "./valor-carta";
 
-export const puntosYAsignar = ( puntosJugador, carta, puntosHTML )=>{
+export const puntosYAsignar = ( puntos, carta, puntosHTML )=>{
 
-    puntosJugador = puntosJugador + valorCarta(carta);
-    puntosHTML.innerText = puntosJugador;
+    puntos = puntos + valorCarta(carta);
+    console.log(puntosHTML)
+    puntosHTML.innerText = puntos;
 
-    return puntosJugador
-
+    return puntos
 }
-

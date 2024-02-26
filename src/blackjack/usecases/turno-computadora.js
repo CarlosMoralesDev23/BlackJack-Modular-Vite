@@ -1,5 +1,6 @@
 import { crearCarta, pedirCarta } from "./barril";
-import { valorCarta } from "./barril";
+import { puntosYAsignar } from "./puntosYAsignar";
+
 
 
 /**
@@ -20,8 +21,7 @@ export const turnoComputadora = (puntosMinimos, puntosHTML, divCartasComputadora
     do {
         const carta = pedirCarta( deck );
 
-        puntosComputadora = puntosComputadora + valorCarta(carta);
-        puntosHTML.innerText = puntosComputadora;
+        puntosComputadora = puntosYAsignar(puntosComputadora, carta, puntosHTML);
 
         // <img class="carta" src="assets/cartas/2C.png">
         const imgCarta = crearCarta( carta )
