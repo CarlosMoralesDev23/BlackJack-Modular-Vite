@@ -1,4 +1,5 @@
 
+
 import { valorCarta } from "./valor-carta";
 
 export const puntosYAsignar = ( puntos, carta, puntosHTML )=>{

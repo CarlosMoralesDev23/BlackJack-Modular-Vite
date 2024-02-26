@@ -1,7 +1,7 @@
+
+
 import { crearCarta, pedirCarta } from "./barril";
 import { puntosYAsignar } from "./puntosYAsignar";
-
-
 
 /**
  * 

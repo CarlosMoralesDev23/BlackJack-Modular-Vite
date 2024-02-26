@@ -44,10 +44,12 @@ btnPedir.addEventListener("click", () => {
         puntosJugador,
         puntosHTML[1],
         divCartasComputadora,
-        deck,
-        turnoComputadora
+        deck
     );
 });
+
+
+
 
 btnDetener.addEventListener("click", () => {
     btnPedir.disabled = true;
@@ -55,6 +57,9 @@ btnDetener.addEventListener("click", () => {
 
     turnoComputadora(puntosJugador, puntosHTML[1], divCartasComputadora, deck);
 });
+
+
+
 
 btnNuevo.addEventListener("click", () => {
     console.clear();

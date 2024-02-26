@@ -9,11 +9,9 @@ export { puntosYAsignar }          from "./puntosYAsignar.js"
 export { turnoComputadora }        from "./turno-computadora";
 export { valorCarta }              from "./valor-carta";
 
-
-
-export { btnPedir }             from "./dom.js";
-export { btnDetener }           from "./dom.js";
-export { btnNuevo }             from "./dom.js";
-export { divCartasJugador }     from "./dom.js";
-export { divCartasComputadora } from "./dom.js";
-export { puntosHTML }           from "./dom.js";
+export { btnPedir }                from "./dom.js";
+export { btnDetener }              from "./dom.js";
+export { btnNuevo }                from "./dom.js";
+export { divCartasJugador }        from "./dom.js";
+export { divCartasComputadora }    from "./dom.js";
+export { puntosHTML }              from "./dom.js";
